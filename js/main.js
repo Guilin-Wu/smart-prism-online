@@ -296,6 +296,16 @@ function bindEvents() {
         fileUploaderCompare.addEventListener('change', (event) => handleFileData(event, 'compare'));
     }
 
+    // 兼容：点击左侧的 label 元素也应打开对应的隐藏 input
+    const importMainLabel = document.getElementById('import-main-btn');
+    if (importMainLabel && fileUploader) {
+        importMainLabel.addEventListener('click', () => fileUploader.click());
+    }
+    const importCompareLabel = document.getElementById('import-compare-btn');
+    if (importCompareLabel && fileUploaderCompare) {
+        importCompareLabel.addEventListener('click', () => fileUploaderCompare.click());
+    }
+
     // 导航切换
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
