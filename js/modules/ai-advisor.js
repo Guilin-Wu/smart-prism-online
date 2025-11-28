@@ -798,19 +798,7 @@ export async function initAIModule() {
     }
 }
 
-// 渲染 AI 模块的入口，供 router/main.js 注册使用
-export function renderAIAdvisor(container) {
-    // 如果已有迁移后的渲染函数（例如 legacy 或其他模块提供），优先调用
-    if (typeof window._legacy_renderAIAdvisor === 'function') {
-        try { window._legacy_renderAIAdvisor(container); return; } catch (e) { console.error(e); }
-    }
-
-    // 简单占位：如果页面上有 ai-advisor 的 DOM 容器，则显示提示
-    const el = container || document.getElementById('module-ai-advisor');
-    if (el) {
-        el.innerHTML = `<div style="padding:20px;color:#666;">AI 模块已迁移（轻量占位）。若需完整功能，请确保 AI 模块已完全迁移。</div>`;
-    }
-}
+// note: single renderAIAdvisor definition is below (merged with State sync / init logic)
 /* eslint-disable no-undef */
 'use strict';
 
@@ -822,6 +810,10 @@ import { State } from '../config/state.js';
  * 此函数确保初始化函数被正确调用
  */
 export function renderAIAdvisor(container) {
+    // 兼容 legacy 提供的全局渲染函数（优先使用 legacy 实现）
+    if (typeof window._legacy_renderAIAdvisor === 'function') {
+        try { window._legacy_renderAIAdvisor(container); return; } catch (e) { console.error(e); }
+    }
     // 将 State 中的 AI 历史与当前会话 ID 预先同步到旧全局，供 script.js 使用
     if (Array.isArray(State.aiChatHistory) && State.aiChatHistory.length > 0) {
         window.G_AIChatHistory = State.aiChatHistory;
