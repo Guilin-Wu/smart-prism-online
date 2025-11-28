@@ -1,0 +1,234 @@
+/* --- 侧边栏样式 --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: visible !important;
+    position: relative;
+    padding: 24px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    z-index: 10;
+    border-right: 1px solid var(--border-color);
+    min-width: 150px;
+    max-width: 600px;
+    transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), padding 0.3s, opacity 0.3s;
+    white-space: nowrap;
+}
+
+.sidebar-header {
+    padding-bottom: 50px; 
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    overflow: hidden;
+    text-align: center;
+}
+
+.sidebar-header h2 {
+    color: var(--primary-color-dark);
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li a, .upload-label {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: var(--sidebar-text);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.sidebar ul li a:hover, .upload-label:hover {
+    background-color: var(--sidebar-hover-bg);
+    color: var(--text-color);
+}
+
+.sidebar ul li a.active {
+    background-color: var(--sidebar-active-bg);
+    color: var(--sidebar-active-text);
+    font-weight: 600;
+}
+
+.sidebar ul li a.disabled, .upload-label.disabled {
+    color: #9f3131;
+    background-color: transparent;
+    cursor: not-allowed;
+}
+
+.sidebar-logo {
+    display: block;
+    width: 800px;
+    height: auto;
+    margin: 0 auto 15px;
+    border-radius: 12px;
+    object-fit: contain;
+}
+
+/* 配置项 */
+.config-section {
+    padding: 0 10px;
+}
+
+.config-section h4 {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    color: var(--text-muted);
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.sidebar-select {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    background-color: #fff;
+}
+
+.sidebar-button {
+    padding: 10px 12px;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s;
+}
+
+.sidebar-button:hover {
+    background-color: var(--primary-color-dark);
+}
+
+/* 侧边栏折叠状态 */
+.sidebar.collapsed {
+    width: 0 !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    overflow: visible !important;
+    opacity: 1 !important;
+    transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.sidebar.collapsed > *:not(#sidebar-drag-handle) {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none;
+}
+
+.sidebar.collapsed #sidebar-drag-handle {
+    right: -24px;
+    left: auto;
+    border-radius: 0 20px 20px 0;
+    border-left: 1px solid #dee2e6;
+}
+
+.sidebar.collapsed #sidebar-drag-handle .handle-icon {
+    transform: rotate(180deg);
+}
+
+.sidebar.no-transition {
+    transition: none !important;
+}
+
+/* 侧边栏列表 */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-right: -10px;
+    padding-right: 10px;
+}
+
+/* 侧边栏折叠手柄 */
+#sidebar-drag-handle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -12px;
+    left: auto;
+    width: 24px;
+    height: 50px;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-left: none;
+    border-radius: 0 20px 20px 0;
+    box-shadow: 4px 0 6px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1001;
+    transition: background-color 0.2s;
+    user-select: none;
+}
+
+#sidebar-drag-handle:hover {
+    background-color: var(--primary-color);
+}
+
+#sidebar-drag-handle:hover .handle-icon {
+    color: #fff;
+}
+
+/* 侧边栏宽度拖拽条 */
+#sidebar-resizer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 8px;
+    cursor: col-resize;
+    z-index: 1000;
+    background-color: transparent;
+    transition: background-color 0.2s;
+}
+
+#sidebar-resizer:hover,
+#sidebar-resizer.resizing {
+    background-color: var(--primary-color);
+    opacity: 0.5;
+}
+
+/* 侧边栏文字防溢出 */
+.sidebar h2,
+.sidebar h4,
+.sidebar a,
+.sidebar button,
+.sidebar .upload-label,
+.sidebar li,
+.sidebar option,
+.sidebar select {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100%;
+}
+
+.sidebar .nav-link {
+    display: block !important;
+}
+
+.sidebar .upload-label {
+    display: block !important;
+    line-height: 1.5;
+}
+

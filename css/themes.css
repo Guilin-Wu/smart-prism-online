@@ -1,0 +1,23 @@
+/* --- 主题样式 --- */
+/* 暗黑模式下的输入框和表格 */
+[data-theme="dark"] .sidebar-select, 
+[data-theme="dark"] input, 
+[data-theme="dark"] textarea {
+    background-color: #2d2d2d;
+    color: #fff;
+    border-color: #444;
+}
+
+[data-theme="dark"] tr:hover {
+    background-color: #2d2d2d;
+}
+
+[data-theme="dark"] th {
+    background-color: #252525;
+    color: #fff;
+}
+
+[data-theme="dark"] .student-card div {
+    background-color: #2d2d2d;
+}
+

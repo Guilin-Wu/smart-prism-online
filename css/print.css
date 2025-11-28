@@ -1,0 +1,28 @@
+/* --- 打印样式 --- */
+@media print {
+    /* 隐藏折叠框的背景色和边框 */
+    details.ai-reasoning-box {
+        border: 1px dashed #ccc;
+        background-color: transparent;
+    }
+    
+    details.ai-reasoning-box summary {
+        background-color: transparent;
+        border-bottom: 1px solid #ccc;
+    }
+
+    /* 如果屏幕上是收起的，打印时彻底隐藏内容 */
+    details.ai-reasoning-box:not([open]) .ai-reasoning-content {
+        display: none !important;
+    }
+
+    /* 如果屏幕上是展开的，打印时显示内容 */
+    details.ai-reasoning-box[open] .ai-reasoning-content {
+        display: block !important;
+    }
+
+    /* 隐藏打印按钮 */
+    .ai-bubble-print-btn {
+        display: none !important;
+    }
+}

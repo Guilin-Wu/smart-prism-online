@@ -1,0 +1,53 @@
+/* CSS 变量定义 */
+:root {
+    --primary-color: #007bff;
+    --primary-color-dark: #0056b3;
+    
+    /* 浅色侧边栏颜色 */
+    --sidebar-bg: #f8f9fc;
+    --sidebar-text: #495057;
+    --sidebar-active-text: #0056b3;
+    --sidebar-active-bg: #e6f2ff;
+    --sidebar-hover-bg: #f1f3f5;
+    
+    /* KPI 颜色 */
+    --color-blue: #007bff;
+    --color-green: #28a745;
+    --color-cyan: #17a2b8;
+    --color-yellow: #ffc107;
+    --color-red: #dc3545;
+    --color-gray: #6c757d;
+    --color-orange: #fd7e14;
+    --color-purple: #6f42c1;
+
+    --border-color: #dee2e6;
+    --background-color: #f4f7fa;
+    --card-background: #ffffff;
+    --text-color: #333;
+    --text-muted: #6c757d;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --border-radius: 8px;
+}
+
+/* 暗黑模式覆盖 */
+[data-theme="dark"] {
+    --primary-color: #3b82f6;
+    --primary-color-dark: #60a5fa;
+    
+    --sidebar-bg: #1e1e1e;
+    --sidebar-text: #e0e0e0;
+    --sidebar-active-text: #60a5fa;
+    --sidebar-active-bg: #2d2d2d;
+    --sidebar-hover-bg: #2d2d2d;
+
+    --background-color: #121212;
+    --card-background: #1e1e1e;
+    
+    --text-color: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --border-color: #333333;
+    
+    --chart-axis-color: #eeeeee;
+}
+
